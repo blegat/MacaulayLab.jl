@@ -3,7 +3,7 @@
 `MacaulayLab.jl` is an interface to the **[MacaulayLab](http://www.macaulaylab.net/)**
 solver. It exports the `solvesystem` function that is a thin wrapper on top of the
 `solvesystem` MATLAB function and use it to define the `MacaylayLab.Solver` object that
-implements the solver-independent `SemialgebraicSets` API for solving algebraic systems.
+implements the solver-independent [`SemialgebraicSets`](https://github.com/JuliaAlgebra/SemialgebraicSets.jl) API for solving algebraic systems.
 
 Consider the system of polynomial equations defined by
 `x^2 + x == 6` and `y == x + 1`
@@ -38,7 +38,7 @@ Dict{String, Any} with 8 entries:
   "shiftvalues"               => [6.57699, -5.28077]
   "solutions"                 => Any[[6.57699, -5.28077], [2.0, -3.0], [3.0, -2.0]]
 ```
-To solve it with SemialgebraicSets interface, do
+To solve it with [`SemialgebraicSets`](https://github.com/JuliaAlgebra/SemialgebraicSets.jl) interface, do
 ```julia
 julia> using DynamicPolynomial, MacaulayLab, SemialgebraicSets
 
