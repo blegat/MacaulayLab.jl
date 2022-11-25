@@ -1,7 +1,7 @@
 # MacaulayLab
 
-`MacaulayLab.jl` is an interface to the **[MacaulayLab](http://www.macaulaylab.net/)**
-solver. It exports the `solvesystem` function that is a thin wrapper on top of the
+`MacaulayLab.jl` is an interface to the **[MacaulayLab](http://www.macaulaylab.net/)** solver for algebraic equations.
+It exports the `solvesystem` function that is a thin wrapper on top of the
 `solvesystem` MATLAB function and use it to define the `MacaylayLab.Solver` object that
 implements the solver-independent [`SemialgebraicSets`](https://github.com/JuliaAlgebra/SemialgebraicSets.jl) API for solving algebraic systems.
 
