@@ -1,0 +1,4 @@
+[deps]
+DynamicPolynomials = "7c1d4256-1411-5781-91ec-d7bc3513ac07"
+SemialgebraicSets = "8e049039-38e8-557d-ae3a-bc521ccf6204"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
