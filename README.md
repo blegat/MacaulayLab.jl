@@ -74,4 +74,6 @@ julia> using MATLAB
 julia> mat"addpath('/home/blegat/git/macaulaylab-public/Code')"
 
 julia> mat"addpath('/home/blegat/git/macaulaylab-public/Database')"
+
+julia> mat"savepath"
 ```
