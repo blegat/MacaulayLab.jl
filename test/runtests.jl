@@ -29,7 +29,7 @@ function test_solve_system()
          -1 1 1 1
          -2 0 0 0],
     ]
-    X, output = solvesystem(P)
+    X, output = solvesystem(P, 6)
     @test size(X) == (15, 3)
     @test output["accuracy"] < 1e-10
 end
