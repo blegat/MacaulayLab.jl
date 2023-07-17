@@ -51,15 +51,19 @@ function solvesystem(P::Vector{<:MP.AbstractPolynomialLike}, maxdegree::Real, ar
     return solvesystem(_mat(P), maxdegree, args...)
 end
 
+function solvesystem(P::Vector{<:MP.AbstractPolynomialLike}, ::Nothing, args...)
+    return solvesystem(P, args...)
+end
+
 function solvesystem(P::Vector{<:MP.AbstractPolynomialLike}, args...)
-    return solvesystem(_mat(P), sum(MP.maxdegree, P) - length(P) + 2, args...)
+    return solvesystem(P, sum(MP.maxdegree, P) - length(P) + 2, args...)
 end
 
 struct Solver <: SS.AbstractAlgebraicSolver
-    maxdegree::Int
+    maxdegree
     options::Options
 end
-Solver(maxdegree::Int) = Solver(maxdegree, Options())
+Solver(maxdegree=nothing) = Solver(maxdegree, Options())
 
 SS.default_gröbner_basis_algorithm(::Any, ::Solver) = SS.NoAlgorithm()
 
