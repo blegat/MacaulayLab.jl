@@ -64,5 +64,14 @@ You can install `MacaulayLab.jl` through the Julia package manager:
 ```
 but you first need to make sure that you satisfy the requirements of the
 [MATLAB.jl](https://github.com/JuliaInterop/MATLAB.jl) Julia package and that
-the SDPT3 software is installed in your
+the MacaulayLab software is installed in your
 [MATLAB™](http://www.mathworks.com/products/matlab/) installation.
+
+Then, you will need to add the path to MATLAB:
+```julia
+julia> using MATLAB
+
+julia> mat"addpath('/home/blegat/git/macaulaylab-public/Code')"
+
+julia> mat"addpath('/home/blegat/git/macaulaylab-public/Database')"
+```
