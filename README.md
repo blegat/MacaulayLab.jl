@@ -10,7 +10,7 @@ Consider the system of polynomial equations defined by
 
 To solve it with MacaulayLab directly, do
 ```julia
-julia> using DynamicPolynomial, MacaulayLab
+julia> using DynamicPolynomials, MacaulayLab
 
 julia> @polyvar x y
 (x, y)
