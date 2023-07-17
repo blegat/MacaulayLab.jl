@@ -1,9 +1,8 @@
 module MacaulayLab
 
 import MATLAB
-import MultivariatePolynomials
-const MP = MultivariatePolynomials
-import SemialgebraicSets
+import MultivariatePolynomials as MP
+import SemialgebraicSets as SS
 
 export solvesystem
 
@@ -28,13 +27,14 @@ function solvesystem(P::Vector{<:MP.AbstractPolynomialLike})
     return solvesystem(_mat.(P))
 end
 
-struct Solver <: SemialgebraicSets.AbstractAlgebraicSolver end
+struct Solver <: SS.AbstractAlgebraicSolver end
 
-function SemialgebraicSets.solvealgebraicequations(
-    V::SemialgebraicSets.AbstractAlgebraicSet,
-    ::Solver,
-)
-    p = SemialgebraicSets.equalities(V)
+SS.default_gröbner_basis_algorithm(::Any, ::Solver) = SS.NoAlgorithm()
+
+SS.promote_for(::Type{T}, ::Type{Solver}) where {T} = float(T)
+
+function SS.solve(V::SS.AbstractAlgebraicSet, ::Solver)
+    p = SS.equalities(V)
     X, _ = solvesystem(p)
     return [X[i, :] for i in axes(X, 1)]
 end
