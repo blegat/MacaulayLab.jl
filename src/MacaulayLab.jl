@@ -69,9 +69,22 @@ SS.default_gröbner_basis_algorithm(::Any, ::Solver) = SS.NoAlgorithm()
 
 SS.promote_for(::Type{T}, ::Type{Solver}) where {T} = float(T)
 
+function _real(x::Complex{T}) where T
+    if abs(imag(x)) > Base.rtoldefault(T)
+        @warn("Ignoring imaginary part of `$x`")
+    end
+    return real(x)
+end
+
+_real(x::Real) = x
+
+function _real(x::Vector)
+    return _real.(x)
+end
+
 function SS.solve(V::SS.AbstractAlgebraicSet, s::Solver)
     X, _ = solvesystem(SS.equalities(V), s.maxdegree, s.options)
-    return [X[i, :] for i in axes(X, 1)]
+    return [_real(X[i, :]) for i in axes(X, 1)]
 end
 
 end # module MacaulayLab
